@@ -42,7 +42,7 @@
 									placeholder = "Insert your name" />
 							</p>
 							<p>
-								<label>Subject</label>
+								<label>Interest</label>
 								<input type = "text"
 									id = "sub"
 									placeholder = "Insert subject of choice" />
@@ -56,17 +56,40 @@
 							<p></p>
 							<button id = "confirm" onclick="addTable(document.getElementById('table').value, document.getElementById('nam').value,
 							document.getElementById('sub').value), getData()">Confirm</button>
-							<!-- <script>
-      							function addSub(sub)  {
-        							firebase.database().ref('subs/' + sub).set({
-          							sub: sub,
-        							})
-      							}
-    						</script> -->
 
+							<!--If you enter info anywhere and press enter it enters-->
+							<script>
+								var input = document.getElementById("table");
+								input.addEventListener("keyup", function(event) {
+  									event.preventDefault();
+  									if (event.keyCode === 13) {
+    									document.getElementById("confirm").click();
+  									}
+								});
+							</script>
+							<script>
+								var input = document.getElementById("sub");
+								input.addEventListener("keyup", function(event) {
+  									event.preventDefault();
+  									if (event.keyCode === 13) {
+    									document.getElementById("confirm").click();
+  									}
+								});
+							</script>
+							<script>
+								var input = document.getElementById("nam");
+								input.addEventListener("keyup", function(event) {
+  									event.preventDefault();
+  									if (event.keyCode === 13) {
+    									document.getElementById("confirm").click();
+  									}
+								});
+							</script>
+							<!-- end of these functions that do the same thing-->
+							
     						<script>
       							function addTable(table, nam, sub)  {
-        							firebase.database().ref('tables/' + table).update({
+        							firebase.database().ref('tables/' + table.toUpperCase()).update({
         							name: nam,
           							subject: sub,
         							})
@@ -75,6 +98,8 @@
     						
     						<script>
 								function getData(){
+									document.getElementById('abpp').innerHTML = "";
+									document.getElementById('undp').innerHTML = "";
 									var query = firebase.database().ref("tables/").orderByKey();
 									query.once("value").then(function(snapshot) {
 										var resultSection = document.getElementById('result');
@@ -106,12 +131,6 @@
 									});
 								}
 							</script>
-
-							<script>
-								function deleteData(){
-
-								}
-							</script>
                             <!--List all the eating places-->
                             <!--Pls label tables with letters corresponding to place-->
 							<h1 id = "abp">AU BON PAIN AT SKIBO CAFÉ</h1>
@@ -119,7 +138,14 @@
 							<h1 id = "und">THE UNDERGROUND</h1>
 							<p id = "undp"> </p>
 							<div id = "result"></div>
-						
+							
+							<button id = "delete" onclick="deleteData(document.getElementById('table').value), getData()">End Lunch</button>
+
+							<script>
+								function deleteData(table){
+									firebase.database().ref('tables/' + table).remove();
+								}
+							</script>
 						</header>
 	
 			</div>
