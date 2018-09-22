@@ -53,9 +53,11 @@
 									id = "table"
 									placeholder = "Insert table code" />
 							</p>
-							<p></p>
+
 							<button id = "confirm" onclick="addTable(document.getElementById('table').value, document.getElementById('nam').value,
 							document.getElementById('sub').value), getData()">Confirm</button>
+
+							<p> </p>
 
 							<!--If you enter info anywhere and press enter it enters-->
 							<script>
@@ -86,7 +88,7 @@
 								});
 							</script>
 							<!-- end of these functions that do the same thing-->
-							
+
     						<script>
       							function addTable(table, nam, sub)  {
         							firebase.database().ref('tables/' + table.toUpperCase()).update({
