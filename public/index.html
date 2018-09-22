@@ -33,11 +33,11 @@
 				<!-- Main -->
 					<section id="main">
 						<header>
-							<h1 id = "name">Schwaboi27</h1>
+							<h1 id = "name">Find a Table Friend</h1>
 							<p>
 								<label>Name</label>
 								<input type = "text"
-									id = "name"
+									id = "nam"
 									placeholder = "Insert your name" />
 							</p>
 							<p>
@@ -53,7 +53,7 @@
 									placeholder = "Insert table code" />
 							</p>
 
-							<button id = "confirm" onclick="addTable(document.getElementById('table').value,
+							<button id = "confirm" onclick="addTable(document.getElementById('table').value, document.getElementById('nam').value,
 							document.getElementById('sub').value), getData()">Confirm</button>
 							<!-- <script>
       							function addSub(sub)  {
@@ -64,8 +64,9 @@
     						</script> -->
 
     						<script>
-      							function addTable(table, sub)  {
+      							function addTable(table, nam, sub)  {
         							firebase.database().ref('tables/' + table).update({
+        							name: nam,
           							subject: sub,
         							})
       							}
@@ -73,15 +74,21 @@
     						
     						<script>
 								function getData(){
-									var query = firebase.database().ref("tables").orderByKey();
+									var query = firebase.database().ref("tables/").orderByKey();
 									query.once("value").then(function(snapshot) {
 										var resultSection = document.getElementById('result');
 										resultSection.innerHTML = "";
 										snapshot.forEach(function(childSnapshot) {
-											var key = childSnapshot.key;
+											var string = "";
+											var table = childSnapshot.key;
 											var childData = childSnapshot.val();
-											console.log(key);
-											resultSection.innerHTML += ("<br>Table:  " + key)
+											var sub = childData.subject;
+											var name = childData.name;
+
+											console.log(childData);
+											resultSection.innerHTML += ("<br> Table: " + table + " - Name: " + name + " - Subject: " + sub);
+											
+											
 										});
 									});
 								}
