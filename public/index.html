@@ -55,22 +55,22 @@
 
 							<button id = "confirm" onclick="addTable(document.getElementById('table').value, document.getElementById('sub').value)">Confirm</button>
 
-							<script>
+							<!-- <script>
       							function addSub(sub)  {
         							firebase.database().ref('subs/' + sub).set({
           							sub: sub,
         							})
       							}
-    						</script>
+    						</script> -->
 
     						<script>
       							function addTable(table, sub)  {
         							firebase.database().ref('tables/' + table).update({
-          							subs: sub,
+          							subject: sub,
         							})
       							}
     						</script>
-
+                            <!--List all the eating places-->
 							<h1 id = "abp">AU BON PAIN AT SKIBO CAFÉ</h1>
 							<p id = "abpp"> </p>
 							<h1 id = "und">THE UNDERGROUND</h1>
