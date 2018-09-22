@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<!--
+	Identity by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
+		<script>
+  		// Initialize Firebase
+  		var config = {
+    		apiKey: "AIzaSyBjN_gxJ787XPIew5XuQg7nGbbcX3_7tdE",
+    		authDomain: "schwad-71cb3.firebaseapp.com",
+    		databaseURL: "https://schwad-71cb3.firebaseio.com",
+    		projectId: "schwad-71cb3",
+    		storageBucket: "schwad-71cb3.appspot.com",
+    		messagingSenderId: "555624260402"
+  		};
+  		firebase.initializeApp(config);
+		</script>
+		<title> SCHWA</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main">
+						<header>
+							<h1 id = "name">Schwaboi27</h1>
+							<p>
+								<label>Name</label>
+								<input type = "text"
+									id = "name"
+									placeholder = "Insert your name" />
+							</p>
+							<p>
+								<label>Subject</label>
+								<input type = "text"
+									id = "sub"
+									placeholder = "Insert subject of choice" />
+							</p>
+							<p>
+								<label>Table</label>
+								<input type = "text"
+									id = "table"
+									placeholder = "Insert table code" />
+							</p>
+
+							<button id = "confirm" onclick="addTable(document.getElementById('table').value,
+							document.getElementById('sub').value), getData()">Confirm</button>
+							<!-- <script>
+      							function addSub(sub)  {
+        							firebase.database().ref('subs/' + sub).set({
+          							sub: sub,
+        							})
+      							}
+    						</script> -->
+
+    						<script>
+      							function addTable(table, sub)  {
+        							firebase.database().ref('tables/' + table).update({
+          							subject: sub,
+        							})
+      							}
+    						</script>
+    						
+    						<script>
+								function getData(){
+									var query = firebase.database().ref("tables").orderByKey();
+									query.once("value").then(function(snapshot) {
+										var resultSection = document.getElementById('result');
+										resultSection.innerHTML = "";
+										snapshot.forEach(function(childSnapshot) {
+											var key = childSnapshot.key;
+											var childData = childSnapshot.val();
+											console.log(key);
+											resultSection.innerHTML += ("<br>Table:  " + key)
+										});
+									});
+								}
+							</script>
+
+                            <!--List all the eating places-->
+                            <!--Pls label tables with letters corresponding to place-->
+							<h1 id = "abp">AU BON PAIN AT SKIBO CAFÉ</h1>
+							<p id = "abpp"> </p>
+							<div id = "result"> </div>
+							<h1 id = "und">THE UNDERGROUND</h1>
+							<p id = "undp"> </p>
+						
+						</header>
+	
+			</div>
+
+		<!-- Scripts -->
+			<script>
+				if ('addEventListener' in window) 
+				{
+					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-preload\b/, ''); });
+					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+				}
+			</script>
+
+	</body>
+</html>
