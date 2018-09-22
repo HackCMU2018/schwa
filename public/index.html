@@ -35,6 +35,12 @@
 						<header>
 							<h1 id = "name">Schwaboi27</h1>
 							<p>
+								<label>Name</label>
+								<input type = "text"
+									id = "name"
+									placeholder = "Insert your name" />
+							</p>
+							<p>
 								<label>Subject</label>
 								<input type = "text"
 									id = "sub"
@@ -47,7 +53,7 @@
 									placeholder = "Insert table code" />
 							</p>
 
-							<button id = "confirm" onclick="addSub(document.getElementById('sub').value); addTable(document.getElementById('table').value)">Confirm</button>
+							<button id = "confirm" onclick="addTable(document.getElementById('table').value, document.getElementById('sub').value)">Confirm</button>
 
 							<script>
       							function addSub(sub)  {
@@ -58,9 +64,9 @@
     						</script>
 
     						<script>
-      							function addTable(table)  {
-        							firebase.database().ref('tables/' + table).set({
-          							table: table,
+      							function addTable(table, sub)  {
+        							firebase.database().ref('tables/' + table).update({
+          							subs: sub,
         							})
       							}
     						</script>
@@ -70,6 +76,7 @@
 							<h1 id = "und">THE UNDERGROUND</h1>
 							<p id = "undp"> </p>
 						</header>
+	
 			</div>
 
 		<!-- Scripts -->
