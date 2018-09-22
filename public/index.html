@@ -53,8 +53,8 @@
 									placeholder = "Insert table code" />
 							</p>
 
-							<button id = "confirm" onclick="addTable(document.getElementById('table').value, document.getElementById('sub').value)">Confirm</button>
-
+							<button id = "confirm" onclick="addTable(document.getElementById('table').value,
+							document.getElementById('sub').value), getData()">Confirm</button>
 							<!-- <script>
       							function addSub(sub)  {
         							firebase.database().ref('subs/' + sub).set({
@@ -70,11 +70,31 @@
         							})
       							}
     						</script>
+    						
+    						<script>
+								function getData(){
+									var query = firebase.database().ref("tables").orderByKey();
+									query.once("value").then(function(snapshot) {
+										var resultSection = document.getElementById('result');
+										resultSection.innerHTML = "";
+										snapshot.forEach(function(childSnapshot) {
+											var key = childSnapshot.key;
+											var childData = childSnapshot.val();
+											console.log(key);
+											resultSection.innerHTML += ("<br>Table:  " + key)
+										});
+									});
+								}
+							</script>
+
                             <!--List all the eating places-->
+                            <!--Pls label tables with letters corresponding to place-->
 							<h1 id = "abp">AU BON PAIN AT SKIBO CAFÉ</h1>
 							<p id = "abpp"> </p>
+							<div id = "result"> </div>
 							<h1 id = "und">THE UNDERGROUND</h1>
 							<p id = "undp"> </p>
+						
 						</header>
 	
 			</div>
