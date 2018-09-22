@@ -27,7 +27,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
-	<body class="is-preload">
+	<body class="is-preload" onload="javascript:getData()">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -35,24 +35,25 @@
 				<!-- Main -->
 					<section id="main">
 						<header>
-							<h1 id = "name">Find a Table Friend</h1>
+							<h1 id = "name">Food with Friends</h1>
+
 							<p>
 								<label>Name</label>
 								<input type = "text"
 									id = "nam"
-									placeholder = "Insert your name" />
+									placeholder = "What's your name?" />
 							</p>
 							<p>
 								<label>Interest</label>
 								<input type = "text"
 									id = "sub"
-									placeholder = "Insert subject of choice" />
+									placeholder = "What are you passionate about?" />
 							</p>
 							<p>
 								<label>Table</label>
 								<input type = "text"
 									id = "table"
-									placeholder = "Insert table code" />
+									placeholder = "TableID" />
 							</p>
 
 							<button id = "confirm" onclick="addTable(document.getElementById('table').value, document.getElementById('nam').value,
@@ -103,6 +104,8 @@
 								function getData(){
 									document.getElementById('abpp').innerHTML = "";
 									document.getElementById('undp').innerHTML = "";
+									document.getElementById('resp').innerHTML = "";
+									document.getElementById('indp').innerHTML = "";
 									var query = firebase.database().ref("tables/").orderByKey();
 									query.once("value").then(function(snapshot) {
 										var resultSection = document.getElementById('result');
@@ -123,6 +126,14 @@
 												resultSection = document.getElementById('undp');
 												validTable = true;
 											}
+											if (table.substring(0,1).toUpperCase() == "C"){
+												resultSection = document.getElementById('resp');
+												validTable = true;
+											}
+											if (table.substring(0,1).toUpperCase() == "D"){
+												resultSection = document.getElementById('indp');
+												validTable = true;
+											}
 											// else{
 											// 	break;
 											// }
@@ -134,19 +145,24 @@
 									});
 								}
 							</script>
+
                             <!--List all the eating places-->
                             <!--Pls label tables with letters corresponding to place-->
 							<h1 id = "abp">AU BON PAIN</h1>
 							<p id = "abpp"> </p>
 							<h1 id = "und">THE UNDERGROUND</h1>
 							<p id = "undp"> </p>
+							<h1 id = "res">RESNIK</h1>
+							<p id = "resp"> </p>
+							<h1 id = "ind">iNOODLE</h1>
+							<p id = "indp"> </p>
 							<div id = "result"></div>
 							
 							<button id = "delete" onclick="deleteData(document.getElementById('table').value), getData()">End Lunch</button>
 
 							<script>
 								function deleteData(table){
-									firebase.database().ref('tables/' + table).remove();
+									firebase.database().ref('tables/' + table.toUpperCase()).remove();
 								}
 							</script>
 						</header>
