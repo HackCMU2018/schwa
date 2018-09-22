@@ -1,0 +1,32 @@
+[debug] [2018-09-22T02:22:05.430Z] ----------------------------------------------------------------------
+[debug] [2018-09-22T02:22:05.434Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\anneh\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-09-22T02:22:05.434Z] CLI Version:   4.2.1
+[debug] [2018-09-22T02:22:05.434Z] Platform:      win32
+[debug] [2018-09-22T02:22:05.434Z] Node Version:  v8.12.0
+[debug] [2018-09-22T02:22:05.435Z] Time:          Fri Sep 21 2018 22:22:05 GMT-0400 (Eastern Daylight Time)
+[debug] [2018-09-22T02:22:05.435Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-09-22T02:22:05.448Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-09-22T02:22:05.449Z] > authorizing via signed-in user
+[debug] [2018-09-22T02:22:05.452Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/schwad-71cb3  
+ 
+[debug] [2018-09-22T02:22:05.792Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-22T02:22:05.794Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/schwad-71cb3  
+ 
+[debug] [2018-09-22T02:22:06.943Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\anneh\schwa'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-09-22T02:22:07.849Z] Fetching environment
+[debug] [2018-09-22T02:22:07.852Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/555624260402:getServerAppConfig  
+ 
+[debug] [2018-09-22T02:22:07.853Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/555624260402/clients/_:getWebAppConfig  
+ 
+[debug] [2018-09-22T02:22:08.481Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-22T02:22:08.482Z] Starting @google-cloud/functions-emulator
+[debug] [2018-09-22T02:22:08.525Z] <<< HTTP RESPONSE 200
+[info] i  hosting[schwad-71cb3]: Serving hosting files from: public
+[info] +  hosting[schwad-71cb3]: Local server: http://localhost:5000
+[debug] [2018-09-22T02:22:11.017Z] Parsing function triggers
+[info] i  functions: No HTTPS functions found. Use firebase functions:shell if you would like to emulate other types of functions.
