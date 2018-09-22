@@ -1,5 +1,5 @@
 # schwa
 A web app for finding people to sit with at lunch
-schwaaaaaaaa
-fuck photon
+schwaaaaaaaa /n
+fuck photon /n
 and also arduino that one sucks too
