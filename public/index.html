@@ -84,10 +84,22 @@
 											var childData = childSnapshot.val();
 											var sub = childData.subject;
 											var name = childData.name;
-
 											console.log(childData);
-											resultSection.innerHTML += ("<br> Table: " + table + " - Name: " + name + " - Subject: " + sub);
-											
+											var validTable = false;
+											if (table.substring(0,1).toUpperCase() == "A"){
+												resultSection = document.getElementById('abpp');
+												validTable = true;
+											}
+											if (table.substring(0,1).toUpperCase() == "B"){
+												resultSection = document.getElementById('undp');
+												validTable = true;
+											}
+											// else{
+											// 	break;
+											// }
+											if (validTable){
+												resultSection.innerHTML += ("<br> Table: " + table + " - Name: " + name + " - Subject: " + sub);
+											}
 											
 										});
 									});
@@ -98,9 +110,9 @@
                             <!--Pls label tables with letters corresponding to place-->
 							<h1 id = "abp">AU BON PAIN AT SKIBO CAFÉ</h1>
 							<p id = "abpp"> </p>
-							<div id = "result"> </div>
 							<h1 id = "und">THE UNDERGROUND</h1>
 							<p id = "undp"> </p>
+							<div id = "result"></div>
 						
 						</header>
 	
